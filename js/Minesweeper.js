@@ -57,8 +57,6 @@ class Minesweeper {
                         <div class="timer">000</div>
                     </div>
                     <div class="field">
-                        <div className="alibab"></div>
-                        
                         <div class="cell">C</div>
                         <div class="cell">C</div>
                         <div class="cell">C</div>
