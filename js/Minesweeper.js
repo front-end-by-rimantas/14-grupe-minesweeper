@@ -11,8 +11,7 @@ class Minesweeper {
         this.bombsCount = 1;
 
         this.clickCount = 0;
-
-        // this.cells = [];
+        this.cells = [];
 
         this.init();
     }
@@ -69,38 +68,20 @@ class Minesweeper {
         this.DOMfield = this.DOM.querySelector('.field');
 
         for ( let i=0; i<this.width * this.height; i++ ) {
-            new Cell(i, this);
+            this.cells.push( new Cell(i, this) );
         }
     }
 
     createBombs( cellIndex ) {
-        console.log('CREATING BOMBS... except for '+cellIndex);
-        console.log('wanted bombs count: '+this.bombsCount);
         let list = [];
-        let counter = 0;
-
-        // for ( let i=0; i<this.bombsCount; i++ ) {
-        //     const position = Math.floor( Math.random() * this.width * this.height );
-        //     if ( list.indexOf(position) === -1 && position !== cellIndex ) {
-        //         list.push( position );
-        //     } else {
-        //         // neuzskaitome ciklo iteracijos kaip sekmingos, tad finale, kartojame dar karta
-        //         i--;
-        //     }
-        // }
-
         while ( list.length < this.bombsCount ) {
-            counter++;
             const position = Math.floor( Math.random() * this.width * this.height );
 
             if ( list.indexOf(position) === -1 && position !== cellIndex ) {
                 list.push( position );
+                this.cells[position].addBomb();
             }
         }
-
-        console.log('reikejo:', this.bombsCount, 'bet sukosi:', counter);
-
-        console.log(list);
     }
 
     checkCell( cellIndex ) {
@@ -113,8 +94,6 @@ class Minesweeper {
     }
 }
 
-// const game = new Minesweeper('#game', 10, 10, 15);
-const game = new Minesweeper('#game', 10, 10, 80);
-// const game = new Minesweeper('#game', 10, 1, 99);
+const game = new Minesweeper('#game', 10, 10, 15);
 
 console.log(game);
