@@ -12,25 +12,15 @@ class BombCounter {
     }
 
     convert( number ) {
+        let newNumber = number;
         if ( number < 100 ) {
-            return '0'+number;
+            newNumber = '0'+newNumber;
         }
         if ( number < 10 ) {
-            return '00'+number;
+            newNumber = '0'+newNumber;
         }
-        return number;
+        return newNumber;
     }
-
-    // convert( number ) {
-    //     let newNumber = number;
-    //     if ( number < 100 ) {
-    //         newNumber = '0'+newNumber;
-    //     }
-    //     if ( number < 10 ) {
-    //         newNumber = '0'+newNumber;
-    //     }
-    //     return newNumber;
-    // }
 
     // convert( number ) {
     //     const maxLength = 3;
